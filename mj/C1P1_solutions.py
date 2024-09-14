@@ -536,6 +536,7 @@ if MAIN:
     demo_gpt2 = DemoTransformer(Config(debug=False)).to(device)
     demo_gpt2.load_state_dict(reference_gpt2.state_dict(), strict=False)
 
+    tokens = reference_gpt2.to_tokens(reference_text).to(device)
     demo_logits = demo_gpt2(tokens)
 
 # %%
@@ -555,6 +556,7 @@ def get_log_probs(
 
 if MAIN:
     pred_log_probs = get_log_probs(demo_logits, tokens)
+    print(tokens)
     print(f"Avg cross entropy loss: {-pred_log_probs.mean():.4f}")
     print(
         f"Avg cross entropy loss for uniform distribution: {math.log(demo_gpt2.cfg.d_vocab):4f}"
