@@ -72,6 +72,7 @@ plotly-express = ">=0.4.1"
 sae-lens = ">=3.18.2"
 torchtyping = ">=0.1.5"
 graphviz = ">=0.20.3"
+ruff = "^0.6.5"
 
 
 [build-system]
